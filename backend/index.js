@@ -21,7 +21,10 @@
 
     //chech database conection
     db.connect(err => {
-        if(err) {console.log(err, 'database err');}
+        if(err)
+        {
+            console.log(err, 'database err');
+        }
         console.log('database connected..');
     })
 
@@ -83,17 +86,63 @@
     app.post('/user',(req,res)=>{
         //console.log('postdata');
         //console.log(req.body,'createdata');
+        let fullName = req.body.fullname;
+        let eMail = req.body.email;
+        let mb = req.body.mobil;
+
+        let qr = `INSERT INTO user (fullname,email,mobil) VALUES ('${fullName}','${eMail}','${mb}')`;
+        db.query(qr,(err,result)=> {
+           if(err) {console.log(err,'errs');}
+           console.log(result,'result')
+           res.send({
+               message: 'data inserted',
+           });
+        });
+    });
 
 
+    //update single data
+    app.put('/user/:id',(req,res)=>{
+        //console.log('postdata');
+        console.log(req.body,'updatedata');
+        let gID = req.params.id;
+        let fullName = req.body.fullname;
+        let eMail = req.body.email;
+        let mb = req.body.mobil;
 
+        let qr = `UPDATE user SET fullname = '${fullName}', email = '${eMail}', mobil = '${mb}' WHERE id = '${gID}'`;
+        db.query(qr,(err,result)=> {
+            if(err) {console.log(err,'errs');}
+            console.log(result,'result')
+            res.send({
+                message: 'data updated',
+            });
+        });
+    });
 
+    //delete single data
+
+    app.delete('/user/:id', (req,res)=>{
+
+        let gID = req.params.id;
+
+        let qr = `DELETE FROM user WHERE id = '${gID}'`;
+        db.query(qr,(err,result)=>{
+           if(err){console.log(err,'errs');}
+           console.log(result,'result')
+            res.send({
+               message: 'data deleted',
+            });
+        });
     });
 
 
 
 
+
+
     app.listen(3000,()=>{
-        console.log('server running..');
+        console.log('backend running..');
     })
 
 
