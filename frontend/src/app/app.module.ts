@@ -7,6 +7,7 @@ import { ReadComponent } from './read/read.component';
 import { CreateComponent } from './create/create.component';
 import {HttpClientModule} from "@angular/common/http";
 import {ApiserviceService} from "./apiservice.service";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -17,7 +18,9 @@ import {ApiserviceService} from "./apiservice.service";
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [ApiserviceService],
   bootstrap: [AppComponent]
