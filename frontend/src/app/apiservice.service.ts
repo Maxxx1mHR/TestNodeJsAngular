@@ -25,6 +25,7 @@ export class ApiserviceService {
   //create data
   createData(data:any):Observable<any>
   {
+    console.log(data, 'craeteapi=>');
     return this._http.post(`${this.apiUrl}`,data);
   }
 

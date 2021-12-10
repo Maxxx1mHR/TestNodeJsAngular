@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {ApiserviceService} from "../apiservice.service";
 
 
 @Component({
@@ -9,7 +10,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 })
 export class CreateComponent implements OnInit {
 
-  constructor() { }
+  constructor(private service: ApiserviceService) { }
 
   errormsg: any;
 
@@ -27,6 +28,9 @@ export class CreateComponent implements OnInit {
     if(this.userForm.valid)
     {
       console.log(this.userForm.value)
+      this.service.createData(this.userForm.value).subscribe((res)=>{
+        console.log(res, 'res==>');
+      });
     }
     else
     {
