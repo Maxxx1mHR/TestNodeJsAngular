@@ -30,9 +30,30 @@ export class ApiserviceService {
   }
 
 
+  //delete data
+
+  deleteData(id:any):Observable<any>
+  {
+    console.log(id, 'delete');
+    let ids = id;
+    return this._http.delete(`${this.apiUrl}/${ids}`);
+  }
 
 
+  //update data
 
+  updateData(data:any, id:any):Observable<any>
+  {
+    let ids = id;
+    return this._http.put(`${this.apiUrl}/${ids}`,data);
+  }
+
+  //get single data
+  getSingleData(id:any):Observable<any>
+  {
+    let ids = id;
+    return this._http.get(`${this.apiUrl}/${ids}`);
+  }
 
 }
 
