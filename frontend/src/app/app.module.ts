@@ -8,12 +8,14 @@ import { CreateComponent } from './create/create.component';
 import {HttpClientModule} from "@angular/common/http";
 import {ApiserviceService} from "./apiservice.service";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { UserComponent } from './user/user.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ReadComponent,
-    CreateComponent
+    CreateComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,

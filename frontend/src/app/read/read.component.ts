@@ -25,7 +25,6 @@ export class ReadComponent implements OnInit {
         console.log(res,'deleteres==>');
         this.successmsg = res.message;
         this.getAllData();
-
     });
   }
 

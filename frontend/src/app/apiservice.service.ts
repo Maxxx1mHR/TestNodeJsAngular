@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from "rxjs";
+import {UserComponent} from "./user/user.component";
 
 @Injectable({
   providedIn: 'root'
@@ -54,6 +55,17 @@ export class ApiserviceService {
     let ids = id;
     return this._http.get(`${this.apiUrl}/${ids}`);
   }
+
+  //ТЕСТ
+  postData(user: UserComponent) {
+    const body = { name: user.name, age: user.age }
+    return this._http.post(
+      'http://localhost:3000/api/values',
+      body
+    )
+  }
+
+
 
 }
 

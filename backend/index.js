@@ -19,7 +19,7 @@
         port: 3306
     });
 
-    //chech database conection
+    //check database connection
     db.connect(err => {
         if(err)
         {
